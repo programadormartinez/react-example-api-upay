@@ -1,13 +1,15 @@
-import { Home } from './pages/Home';
-import { Details } from './pages/Details';
+import Products from './components/Products';
+import { Product } from './components/Product';
+import { Navbar } from './components/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
-        <Route path="/details" element={<Details />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/details/:idProduct" element={<Product />} />
+        <Route path="/" element={<Products />} />
       </Routes>
     </BrowserRouter>
   );
