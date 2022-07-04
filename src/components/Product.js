@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { LoadingSpinner } from '../utils/LoadingSpinner';
+import Card from './Card';
 
 export const Product = () => {
   const [product, setProduct] = useState({});
@@ -15,12 +17,18 @@ export const Product = () => {
   useEffect(() => {
     // getProducts().then((data) => setProducts(data));
     getProductById();
-  }, []);
+  }, [idProduct]);
 
   return (
-    <>
-      <h2>Detalles del producto</h2>
-      {product.name}
-    </>
+    <div>
+      {product.name ? (<Card
+          name={product.name}
+          id={product.id}
+          cost={product.cost}
+          key={product.id}
+          image={product.image[0]}
+        ></Card>):(
+          <LoadingSpinner/> )}
+    </div>
   );
 };
